@@ -1,4 +1,4 @@
-package com.google.codelabs.findnearbyplacesar.ar
+package com.s11.lab4.ar
 
 import android.Manifest
 import com.google.ar.sceneform.ux.ArFragment

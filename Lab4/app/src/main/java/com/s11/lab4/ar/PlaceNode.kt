@@ -1,12 +1,12 @@
-package com.google.codelabs.findnearbyplacesar.ar
+package com.s11.lab4.ar
 
 import android.content.Context
 import android.view.View
 import android.widget.TextView
 import com.google.ar.sceneform.Node
 import com.google.ar.sceneform.rendering.ViewRenderable
-import com.google.codelabs.findnearbyplacesar.R
-import com.google.codelabs.findnearbyplacesar.model.Place
+import com.google.codelabs.lab4.R
+import com.s11.lab4.model.Place
 
 class PlaceNode(
     val context: Context,
