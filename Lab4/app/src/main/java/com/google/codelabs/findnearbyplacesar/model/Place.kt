@@ -1,4 +1,5 @@
-package com.s11.lab4.model
+
+package com.google.codelabs.findnearbyplacesar.model
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.ar.sceneform.math.Vector3

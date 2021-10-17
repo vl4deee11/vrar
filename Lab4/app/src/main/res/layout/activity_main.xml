@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.s11.lab4.MainActivity">
+    tools:context=".MainActivity">
 
     <fragment
         android:id="@+id/ar_fragment"
-        android:name="com.s11.lab4.ar.PlacesArFragment"
+        android:name="com.google.codelabs.findnearbyplacesar.ar.PlacesArFragment"
         android:layout_width="match_parent"
         android:layout_height="754dp"
         android:layout_weight="7" />

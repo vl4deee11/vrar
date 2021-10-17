@@ -1,4 +1,4 @@
-package com.s11.lab4
+package com.google.codelabs.findnearbyplacesar
 
 import android.Manifest
 import android.app.ActivityManager
@@ -20,13 +20,14 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.ar.sceneform.AnchorNode
-import com.google.codelabs.lab4.R
-import com.s11.lab4.ar.PlaceNode
-import com.s11.lab4.ar.PlacesArFragment
-import com.s11.lab4.model.Geometry
-import com.s11.lab4.model.GeometryLocation
-import com.s11.lab4.model.Place
-import com.s11.lab4.model.getPositionVector
+import com.google.codelabs.findnearbyplacesar.ar.PlaceNode
+import com.google.codelabs.findnearbyplacesar.ar.PlacesArFragment
+import com.google.codelabs.findnearbyplacesar.model.Geometry
+import com.google.codelabs.findnearbyplacesar.model.GeometryLocation
+import com.google.codelabs.findnearbyplacesar.model.Place
+import com.google.codelabs.findnearbyplacesar.model.getPositionVector
+import kotlin.math.PI
+import kotlin.math.cos
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
@@ -176,9 +177,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     private fun setPlaces(location: Location) {
         val loc = GeometryLocation(
-            lat = location.latitude,
-            lng = location.longitude
-        )
+                lat = location.latitude,
+                lng = location.longitude
+            )
         this.places = listOf(
             Place(
                 id = "test",
