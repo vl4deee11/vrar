@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <fragment
+        android:id="@+id/ar_fragment"
+        android:name="com.google.codelabs.findnearbyplacesar.ar.PlacesArFragment"
+        android:layout_width="match_parent"
+        android:layout_height="571dp"
+        android:layout_weight="7" />
+
+    <EditText
+        android:id="@+id/editH"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_weight="7"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:inputType="number"
+        android:paddingStart="10dp"
+        android:text="height (default=100)"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editW"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_weight="7"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:inputType="number"
+        android:maxHeight="2dp"
+        android:paddingStart="10dp"
+        android:text="width (default=100)"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/editY"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_weight="7"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:ems="10"
+        android:inputType="number"
+        android:paddingStart="10dp"
+        android:text="y (default=0)"
+        android:textSize="16sp" />
+
+</LinearLayout>
