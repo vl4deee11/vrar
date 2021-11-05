@@ -34,7 +34,7 @@ fun Place.getPositionVector(azimuth: Float, latLng: LatLng): Vector3 {
 //    l->r
     val x = r * sin(azimuth + heading).toFloat()
 //    t->d
-    val y = 1f
+    val y = 0f
 //    f->r
     val z = r * cos(azimuth + heading).toFloat()
     return Vector3(x, y, z)

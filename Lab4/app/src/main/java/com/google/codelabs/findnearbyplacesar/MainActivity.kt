@@ -11,6 +11,8 @@ import android.hardware.SensorManager
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -26,8 +28,8 @@ import com.google.codelabs.findnearbyplacesar.model.Geometry
 import com.google.codelabs.findnearbyplacesar.model.GeometryLocation
 import com.google.codelabs.findnearbyplacesar.model.Place
 import com.google.codelabs.findnearbyplacesar.model.getPositionVector
-import kotlin.math.PI
-import kotlin.math.cos
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.place_view.*
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
@@ -112,34 +114,18 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             return
         }
 
+        editH.isEnabled = false
+        editW.isEnabled = false
+
+        val h =  editH.text.toString().toIntOrNull() ?: 100
+        val w =  editH.text.toString().toIntOrNull() ?: 100
         for (place in places) {
             // Add the place in AR
-            val placeNode = PlaceNode(this, place)
+            val placeNode = PlaceNode(context = this, height = h, width = w,place = place)
             placeNode.setParent(anchorNode)
             placeNode.localPosition =
                 place.getPositionVector(orientationAngles[0], currentLocation.latLng)
-            placeNode.setOnTapListener { _, _ ->
-                showInfoWindow(place)
-            }
         }
-    }
-
-    private fun showInfoWindow(place: Place) {
-        // Show in AR
-        val matchingPlaceNode = anchorNode?.children?.filter {
-            it is PlaceNode
-        }?.first {
-            val otherPlace = (it as PlaceNode).place ?: return@first false
-            return@first otherPlace == place
-        } as? PlaceNode
-        matchingPlaceNode?.showInfoWindow()
-
-        // Show as marker
-        val matchingMarker = markers.firstOrNull {
-            val placeTag = (it.tag as? Place) ?: return@firstOrNull false
-            return@firstOrNull placeTag == place
-        }
-        matchingMarker?.showInfoWindow()
     }
 
 
@@ -177,9 +163,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     private fun setPlaces(location: Location) {
         val loc = GeometryLocation(
-                lat = location.latitude,
-                lng = location.longitude
-            )
+            lat = location.latitude,
+            lng = location.longitude
+        )
         this.places = listOf(
             Place(
                 id = "test",
@@ -190,15 +176,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             )
         )
     }
-
-//    private fun offset(loc: GeometryLocation, dx: Double, dy: Double): GeometryLocation {
-//        val earthRadiusKm = 6378.137
-//
-//        return GeometryLocation(
-//            lat = loc.lat + (dy / earthRadiusKm) * (180 / PI),
-//            lng = loc.lng + (dx / earthRadiusKm) * (180 / PI) / cos(loc.lat * PI / 180)
-//        )
-//    }
 
 
     private fun isSupportedDevice(): Boolean {

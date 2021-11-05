@@ -1,20 +1,21 @@
 package com.google.codelabs.findnearbyplacesar.ar
 
 import android.content.Context
-import android.view.View
-import android.widget.TextView
 import com.google.ar.sceneform.Node
+import com.google.ar.sceneform.math.Vector3
+import com.google.ar.sceneform.rendering.DpToMetersViewSizer
 import com.google.ar.sceneform.rendering.ViewRenderable
 import com.google.codelabs.findnearbyplacesar.R
 import com.google.codelabs.findnearbyplacesar.model.Place
 
 class PlaceNode(
     val context: Context,
+    val height: Int,
+    val width: Int,
     val place: Place?
 ) : Node() {
 
     private var placeRenderable: ViewRenderable? = null
-    private var textViewPlace: TextView? = null
 
     override fun onActivate() {
         super.onActivate()
@@ -27,31 +28,18 @@ class PlaceNode(
             return
         }
 
+        val imageWidth = height / 100f
+        val imageHeight = width / 100f
+        this.localScale = Vector3(imageWidth, imageHeight, imageWidth)
+
         ViewRenderable.builder()
             .setView(context, R.layout.place_view)
+            .setVerticalAlignment(ViewRenderable.VerticalAlignment.CENTER)
             .build()
-            .thenAccept { renderable ->
-                setRenderable(renderable)
-                placeRenderable = renderable
+            .thenAccept {
+                renderable = it
+                placeRenderable = it
 
-                place?.let {
-                    textViewPlace = renderable.view.findViewById(R.id.placeName)
-                    textViewPlace?.text = it.name
-                }
             }
-    }
-
-    fun showInfoWindow() {
-        // Show text
-        textViewPlace?.let {
-            it.visibility = if (it.visibility == View.VISIBLE) View.GONE else View.VISIBLE
-        }
-
-        // Hide text for other nodes
-        this.parent?.children?.filter {
-            it is PlaceNode && it != this
-        }?.forEach {
-            (it as PlaceNode).textViewPlace?.visibility = View.GONE
-        }
     }
 }
