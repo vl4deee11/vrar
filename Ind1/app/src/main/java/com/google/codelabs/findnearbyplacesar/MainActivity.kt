@@ -115,8 +115,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         editW.isEnabled = false
         editY.isEnabled = false
 
-        val h = editH.text.toString().toIntOrNull() ?: 100
-        val w = editH.text.toString().toIntOrNull() ?: 100
+        val h = editH.text.toString().toFloatOrNull() ?: 100f
+        val w = editW.text.toString().toFloatOrNull() ?: 50f
         val y = editY.text.toString().toFloatOrNull() ?: 0f
         for (place in places) {
             // Add the place in AR
@@ -143,13 +143,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return
         }
         fusedLocationClient.lastLocation.addOnSuccessListener { location ->

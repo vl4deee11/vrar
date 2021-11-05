@@ -9,8 +9,8 @@ import com.google.codelabs.findnearbyplacesar.model.Place
 
 class PlaceNode(
     val context: Context,
-    val height: Int,
-    val width: Int,
+    val height: Float,
+    val width: Float,
     val place: Place?
 ) : Node() {
 
@@ -27,8 +27,8 @@ class PlaceNode(
             return
         }
 
-        val imageWidth = height / 100f
-        val imageHeight = width / 100f
+        val imageWidth = width / 100f
+        val imageHeight = height / 100f
         this.localScale = Vector3(imageWidth, imageHeight, imageWidth)
 
         ViewRenderable.builder()

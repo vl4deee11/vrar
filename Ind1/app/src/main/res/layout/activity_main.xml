@@ -12,47 +12,53 @@
         android:id="@+id/ar_fragment"
         android:name="com.google.codelabs.findnearbyplacesar.ar.PlacesArFragment"
         android:layout_width="match_parent"
-        android:layout_height="571dp"
+        android:layout_height="579dp"
         android:layout_weight="7" />
 
     <EditText
         android:id="@+id/editH"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_weight="7"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
-        android:inputType="number"
+        android:hint="height (default=100.0 in cm)"
+        android:inputType="numberDecimal"
         android:paddingStart="10dp"
-        android:text="height (default=100)"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="16sp" />
 
     <EditText
         android:id="@+id/editW"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_weight="7"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
-        android:inputType="number"
+        android:hint="width (default=50.0 in cm)"
+        android:inputType="numberDecimal"
         android:maxHeight="2dp"
         android:paddingStart="10dp"
-        android:text="width (default=100)"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="16sp" />
 
     <EditText
         android:id="@+id/editY"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
+        android:layout_height="wrap_content"
         android:layout_weight="7"
         android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
-        android:inputType="number"
+        android:hint="offset from floor (default=0.0 in cm)"
+        android:inputType="numberDecimal"
         android:paddingStart="10dp"
-        android:text="y (default=0)"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:textSize="16sp" />
 
 </LinearLayout>
